@@ -16,7 +16,7 @@ services:
   app:
     depends_on:
       - mongo
-    container_name: financiallapp-api
+    container_name: financialapp-api
     build:
       context: .
       dockerfile: Dockerfile
