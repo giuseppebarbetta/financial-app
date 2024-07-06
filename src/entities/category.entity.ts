@@ -1,5 +1,5 @@
 type CategoryProps = {
-  id?: string;
+  _id?: string;
   title: string;
   color: string;
 };
@@ -12,6 +12,6 @@ export class Category {
   constructor(props: CategoryProps) {
     this.title = props.title;
     this.color = props.color.toUpperCase();
-    this.id = props.id;
+    this.id = props._id;
   }
 }
