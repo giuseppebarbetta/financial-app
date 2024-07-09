@@ -1,20 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { z } from 'zod';
 
-import { CategoriesRepository } from '../database/repositories/categories.repository';
-import { CategoryModel } from '../database/schemas/category.schema';
 import { CreateCategoryDTO } from '../dtos/categories.dto';
 import { CategoriesService } from '../services/categories.service';
 
 export class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
 
-  async create(
+  create = async (
     req: Request<unknown, unknown, CreateCategoryDTO>,
     res: Response,
     next: NextFunction,
-  ) {
+  ) => {
     try {
       const { title, color } = req.body;
 
@@ -24,9 +21,9 @@ export class CategoriesController {
     } catch (err) {
       next(err);
     }
-  }
+  };
 
-  async index(req: Request, res: Response, next: NextFunction) {
+  index = async (_: Request, res: Response, next: NextFunction) => {
     try {
       const newCategory = await this.categoriesService.index();
 
@@ -34,5 +31,5 @@ export class CategoriesController {
     } catch (err) {
       next(err);
     }
-  }
+  };
 }
