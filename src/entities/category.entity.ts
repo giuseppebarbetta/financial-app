@@ -9,9 +9,9 @@ export class Category {
   public title: string;
   public color: string;
 
-  constructor(props: CategoryProps) {
-    this.title = props.title;
-    this.color = props.color.toUpperCase();
-    this.id = props._id;
+  constructor({ _id, title, color }: CategoryProps) {
+    this.title = title;
+    this.color = color.toUpperCase();
+    this.id = _id;
   }
 }

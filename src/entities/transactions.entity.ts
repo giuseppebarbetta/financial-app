@@ -22,12 +22,12 @@ export class Transaction {
   public category: Category;
   public type: TransactionType;
 
-  constructor(data: TransactionProps) {
-    this._id = data._id;
-    this.title = data.title;
-    this.amount = data.amount;
-    this.date = new Date(data.date);
-    this.category = new Category(data.category);
-    this.type = data.type;
+  constructor({ _id, title, amount, date, category, type }: TransactionProps) {
+    this._id = _id;
+    this.title = title;
+    this.amount = amount;
+    this.date = new Date(date);
+    this.category = new Category(category);
+    this.type = type;
   }
 }
