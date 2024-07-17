@@ -4,6 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import {
   CreateTransactionDTO,
   GetDashboardDTO,
+  GetFinancialEvolutionDTO,
   IndexTransactionsDTO,
 } from '../dtos/transactions.dto';
 import { TransactionsService } from '../services/transactions.service';
@@ -65,6 +66,25 @@ export class TransactionsController {
         beginDate,
         endDate,
       });
+
+      return res.status(StatusCodes.OK).json(newTransaction);
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  getFinancialEvolution = async (
+    req: Request<unknown, unknown, unknown, GetFinancialEvolutionDTO>,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const { year } = req.query;
+
+      const newTransaction =
+        await this.transactionService.getFinancialEvolution({
+          year,
+        });
 
       return res.status(StatusCodes.OK).json(newTransaction);
     } catch (err) {
