@@ -32,6 +32,15 @@ transactionsRoutes.get(
 );
 
 transactionsRoutes.get(
+  '/dashboard',
+  validator({
+    schema: getDashboardSchema,
+    type: ParamsType.QUERY,
+  }),
+  controller.getDashboard,
+);
+
+transactionsRoutes.get(
   '/financial-evolution',
   validator({
     schema: getFinancialEvolutionSchema,
